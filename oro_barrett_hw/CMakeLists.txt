@@ -39,6 +39,7 @@ if("$ENV{OROCOS_TARGET}" STREQUAL "xenomai")
     src/butterworth_solver.c)
 
   orocos_component(barrett_hw_manager
+    include/oro_barrett_hw/wam_hw_device.h
     src/barrett_hw_manager.cpp)
   message(STATUS "--- ${USE_OROCOS_LIBRARIES}")
   target_link_libraries(barrett_hw_manager

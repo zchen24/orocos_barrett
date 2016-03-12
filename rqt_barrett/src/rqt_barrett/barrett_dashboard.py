@@ -141,7 +141,11 @@ class BarrettDashboard(Plugin):
         self._widget.jf_0.setStyleSheet("QLabel { background-color : rgb(%d,%d,%d); color : rgb(%d,%d,%d); }" % (
             joint_bg_color.red(), joint_bg_color.green(), joint_bg_color.blue(), joint_fill_color.red(), joint_fill_color.green(), joint_fill_color.blue()))
 
-        self.urdf = rospy.get_param('robot_description')
+        try:
+            self.urdf = rospy.get_param('robot_description')
+        except KeyError:
+            rospy.logerr('robot_description not set')
+            print 'robot_description not set'
         self.robot = URDF()
         self.robot = self.robot.from_xml_string(self.urdf)
 

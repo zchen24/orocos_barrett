@@ -235,7 +235,7 @@ namespace oro_barrett_hw {
         this->joint_velocity_out.write(this->joint_velocity);
 
         // Publish state to ROS
-        if(this->joint_state_throttle.ready(0.01))
+        if(this->joint_state_throttle.ready(0.002))
         {
           // Update the joint state message
           this->joint_state.header.stamp = rtt_rosclock::host_now();
